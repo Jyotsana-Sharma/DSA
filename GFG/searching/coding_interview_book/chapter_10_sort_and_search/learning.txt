@@ -1,0 +1,2 @@
+1. file:///C:/Users/sunny/OneDrive/Desktop/Cracking%20the%20Coding%20Interview.pdf
+2. Complexity of python inbuilt functions : https://ics.uci.edu/~pattis/ICS-33/lectures/complexitypython.txt 
