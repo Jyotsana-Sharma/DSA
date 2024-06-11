@@ -32,11 +32,11 @@ def merging_two_sorted_list(a,b,m,n):
 def merging_single_list_sorted(arr):
     l=0
     k=0
-    h=len(arr)
+    h=len(arr)-1
     b=[None]*len(arr)
     mid = (l+h)//2
     i,j=l,mid+1
-    while(i<=mid and j<h):
+    while(i<=mid and j<=h):
         if(arr[i]<arr[j]):
             b[k]=arr[i]
             i+=1
@@ -49,13 +49,15 @@ def merging_single_list_sorted(arr):
     for s in range(i,mid+1):
         b[k]=arr[s]
         k+=1
-    for t in range(j,h+1):
+    for t in range(j,h):
         b[k]=arr[t]
         k+=1
-    
+    print(f'\n b :{b}')
     for i in range(0,len(b)):
         arr[i]=b[i]
     return  arr
+
+
 
 a = [int(number) for number in input().split(" ")]
 b = [int(number) for number in input().split(" ")]
