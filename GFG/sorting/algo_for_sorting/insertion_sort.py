@@ -11,6 +11,8 @@ def insertion_sort(arr):
             
     return arr
 
+
+
 arr = [int(number) for number in input().split(" ")]
 sorted_array = insertion_sort(arr)
 print(f'\n sorted array : {sorted_array}\n')
