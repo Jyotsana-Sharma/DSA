@@ -37,3 +37,10 @@ def bucket_sort(arr):
 arr = [float(number) for number in input().split(" ")]
 sorted_arr = bucket_sort(arr)
 print(f'\n sorted array after bucket sort algorithm: {sorted_arr}\n')
+#Steps to understand the bucket sort algorithm 
+#It is used to assign the elements into a bucket to be sorted
+#Step 1: Calculate the largest_value from an array(0.3,0.2,0.1) largest_value=0.3
+#Find the length of an array(3)
+#Find the size = largest_value/length
+#Step 2:Create the "length"(3) times of list in our example it would be 3
+#Step 3: Divide the element by the size to find its bucket

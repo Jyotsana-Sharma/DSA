@@ -19,9 +19,10 @@ def iterative_binary_search(n,arr,search_key):
     print("\n Iterative function of Binary Search")
     left_index = 0
     right_index = n
-    middle_index = (left_index+right_index)//2
+    
     while(left_index<=right_index):
-        middle_element = arr[middle_index]
+        middle_index = (left_index+right_index)//2
+        # middle_element = arr[middle_index]
 
         #check if it is the middle element or not
         if(arr[middle_index]==search_key):
