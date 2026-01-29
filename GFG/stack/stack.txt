@@ -1,0 +1,12 @@
+Stack can have two operations: 
+FILO : First IN Last OUT (First element inserted last out)
+LIFO : Last IN First OUT (last inserted first out)
+In python we use only the list to implement the stack data structure.
+Various use cases of Stack data structure are : 
+1) Finding next or previous greater element. 
+2) Finding next or previous smaller element.
+3) Stock Span/ Next greater element(NGE)/ Histogram Problem
+4) Iterative tower of Hanoi
+5) Evaluation of expression
+
+We can also use dequeue or linked list to implement the stack
