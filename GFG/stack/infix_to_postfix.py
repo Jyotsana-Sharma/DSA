@@ -23,12 +23,47 @@ Another rule to memorize is push the operand ( and pop until you encounter )
 Operands → output
 ( → push
 ) → pop until (
-Operator → pop >= precedence'''
+Operator → pop >= precedence
+Example : Infix : A+B * (C-D)/E
+Postfix result: ABCD-*E/+
+Reason                             |    Stack        | Output     |
+A is an operand push to output     |                 |   A        | 
++ is an operator push to stack     |      +          |   A        |
+B is an operand push to output     |      +          |   AB       |
+* is an operator but check the     |                 |            |
+precedence if(*>=+)then push else  |                 |            |
+pop the existing operator which    |                 |   AB       |
+would have higher precedence       |                 |            |
+class infix_to_postfix:            |                 |            |
+                                   |       +*        |    AB      |
+( parentheses push to stack        |     +*(         |    AB      |                                 
+C is operand push to output        |   +*(           |    ABC     |
+- is operator push to stack        |   +*(-          |    ABC     |
+D is operand push to output        |    +*(-         |    ABCD    |
+) close parenthese encounter       |                 |    ABCD    |
+pop all elements enclosed in ()    |    +*(-)        |    ABCD    |
+popped(-)                          |    +*           | ABCD-      |
+/ check precedenc if (existing     |   +*            | ABCD-      |
+operand of stack)*>=/(new operand) |   +*            |            |
+this is false then pop the * first |   +             | ABCD-*     |
+Now push the / to stack            |   +/            | ABCD-*     |
+E  push to output                  |    +/           | ABCD-*     |
+Pop all stack elements             |                 | ABCD-*/+   |
+                               '''
 
+def convert_infix_to_postfix(arr):
+    stack = []
+    output = []
+    operands = ['+','-','*','/']
+    brackets = ['(',')']
+    for i in arr:
+        if(i not in operands):
+            output.append(i)
+        #check of precedence
+        elif(i in operands):
+            stack[-1]
+        elif(i==')'):
 
-
-class infix_to_postfix:
-    def convert_infix_to_postfix():
 
         
         
