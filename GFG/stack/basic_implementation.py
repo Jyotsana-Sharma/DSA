@@ -15,7 +15,7 @@ class Stack:
     def push(self,item):
         return self.stack_items.append(item)
 
-    #Removes the top item from the stack 
+    #Removes the top item from the stack , It follows the LIFO rule last in first out
     def pop(self):
         return self.stack_items.pop()
     

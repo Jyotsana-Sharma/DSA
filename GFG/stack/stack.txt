@@ -8,5 +8,7 @@ Various use cases of Stack data structure are :
 3) Stock Span/ Next greater element(NGE)/ Histogram Problem
 4) Iterative tower of Hanoi
 5) Evaluation of expression
+6) Infix to postfix/Prefix conversion
+7) Forward and backward features in browser
 
 We can also use dequeue or linked list to implement the stack

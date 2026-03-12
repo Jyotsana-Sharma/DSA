@@ -1,23 +1,32 @@
 # class Solution:
-#     def maxProfit(self, prices) -> int:
-#         l, r = 0, 1
-#         maxP = 0
-
-#         while r < len(prices):
-            
-#             if prices[l] < prices[r]:
-#                 profit = prices[r] - prices[l]
-#                 maxP = max(maxP, profit)
-#             else:
-#                 l = r
-#             r += 1
-#         return maxP
-        
+#     def isValid(self, s: str) -> bool:
+#         l = 0 
+#         r = len(s)-1
+#         bracket_dict = {'(':')','[':']','{':'}'}
+#         stack = []
+#         for char in s:
+#             if(char in bracket_dict.keys()):
+#                 stack.append(char)
+#             elif(char in bracket_dict.values()):
+#                 if(len(stack)!=0 and stack[-1]):  
 
 # obj = Solution()
-# prices = [10,1,5,6,7,1]
+# s = "[]"
+# op = obj.isValid(s)
+# print(op)
+fn = './config.txt'
+def file_read(fn):
+    with open(fn,'r') as f:
 
-# res=obj.maxProfit(prices)
-# print(f'\n res:{res}\n')
-s='kha s'
-print(list(s))
+        op= f.readlines()
+        print(op)
+     
+        for val in op:
+            # val=val.replace('\n','').split('=')
+        
+            yield val.replace('\n','').split('=')
+
+file_read(fn)
+
+        
+    # print(dict)
