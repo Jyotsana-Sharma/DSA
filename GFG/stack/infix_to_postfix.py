@@ -61,7 +61,10 @@ def convert_infix_to_postfix(arr):
             output.append(i)
         #check of precedence
         elif(i in operands):
-            stack[-1]
+            if(len(stack)==0):
+                stack.append(i)
+            else:
+                stack[-1]
         elif(i==')'):
 
 
