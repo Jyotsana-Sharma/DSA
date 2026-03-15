@@ -51,21 +51,43 @@ E  push to output                  |    +/           | ABCD-*     |
 Pop all stack elements             |                 | ABCD-*/+   |
                                '''
 
-def convert_infix_to_postfix(arr):
+def convert_infix_to_postfix(infix_expression):
     stack = []
     output = []
-    operands = ['+','-','*','/']
-    brackets = ['(',')']
-    for i in arr:
-        if(i not in operands):
-            output.append(i)
-        #check of precedence
-        elif(i in operands):
-            if(len(stack)==0):
-                stack.append(i)
-            else:
-                stack[-1]
-        elif(i==')'):
+    precedence = {'^':3,'*':2,'/':2,'+':1,'-':1}
+    
+    for char in infix_expression:
+        #if its an operand then add to output stack
+        if char.isalnum():
+            output.append(char)
+
+        #if its an operator then push to stack
+        elif(char == '('):
+            stack.append(char)
+        
+        #If ')' pop all the elements of the stack until you encounter the '('
+        elif(char == ')'):
+            
+            while stack and stack[-1]!='(':
+                output.append(stack.pop())
+            stack.pop()
+
+        #If operator then check for precedence as well
+        else:
+            while stack and stack[-1]!='(' and  precedence.get(stack[-1],0) >= precedence.get(char,0):
+                output.append(stack.pop())
+            stack.append(char)
+
+        #pop remaining operators
+    while stack:
+        output.append(stack.pop())
+
+    return ''.join(output) 
+
+infix_expression = "a*(b+c)/d"
+resultant_postfix_expression = convert_infix_to_postfix(infix_expression)         
+print(f'\n resultant postfix expression : {resultant_postfix_expression}\n')
+
 
 
         
