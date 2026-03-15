@@ -1,2 +1,2 @@
-#Testing files
-.test*.py
+# Testing files
+test*.py
