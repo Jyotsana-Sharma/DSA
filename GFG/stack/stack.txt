@@ -1,0 +1,75 @@
+Stack can have two operations: 
+FILO : First IN Last OUT (First element inserted last out)
+LIFO : Last IN First OUT (last inserted first out)
+In python we use only the list to implement the stack data structure.
+Various use cases of Stack data structure are : 
+1) Finding next or previous greater element. 
+2) Finding next or previous smaller element.
+3) Stock Span/ Next greater element(NGE)/ Histogram Problem
+4) Iterative tower of Hanoi
+5) Evaluation of expression
+6) Infix to postfix/Prefix conversion
+7) Forward and backward features in browser
+
+We can also use dequeue or linked list to implement the stack
+
+#INFIX, PREFIX and POSTFIX 
+Inorder -> Left-Root-Right - > Infix 
+Preorder -> Root-Left-Right -> Prefix(always scan Right → Left)
+Postorder -> Left-> Right -> Root -> Postorder(always scan Left → Right)
+
+Thumb rule to memorize: 
+Infix : Operator inside 
+Prefix: Operator First
+Postfix: Operator Last
+
+PRE = Parent (Root) first
+POST = Parent (Root) last
+IN = Parent (Root) in between
+
+Whenever you are converting from Prefix or Postfix, follow this process:
+
+1) Read a symbol.
+2) If it's an operand, push it onto the stack.
+3) If it's an operator, pop two operands, combine them in the target notation, and push the result back.
+
+That's it. The only thing that changes is how you combine the two operands.
+
+              Expression Conversion
+                      |
+        -----------------------------
+        |                           |
+ Starts with Infix?          Starts with Prefix/Postfix?
+        |                           |
+      Use stack                 Use stack
+        |                           |
+  Prefix? Reverse trick      Scan direction?
+        |                     Prefix -> Right→Left
+        |                     Postfix -> Left→Right
+        |
+  Postfix? Direct
+
+
+Cheatsheet:
+Notation:
+---------
+Infix   : A+B
+Prefix  : +AB
+Postfix : AB+
+
+Tree Traversals:
+----------------
+Prefix  = Root Left Right
+Infix   = Left Root Right
+Postfix = Left Right Root
+
+Conversions:
+------------
+Infix -> Postfix : Stack
+Infix -> Prefix  : Reverse -> Swap () -> Postfix -> Reverse
+
+Prefix  : Scan Right -> Left
+Postfix : Scan Left -> Right
+
+Operand  -> Push
+Operator -> Pop 2 -> Combine -> Push
