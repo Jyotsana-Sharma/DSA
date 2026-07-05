@@ -22,5 +22,4 @@ obj = Solution()
 s = "()"
 bool_val = obj.isValid(s)
             
-            
         
