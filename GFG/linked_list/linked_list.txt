@@ -1,0 +1,21 @@
+Linked lists are useful when:
+
+-> The number of elements changes frequently.
+-> There are many insertions and deletions.
+->  You don't need fast random access by index.
+| Feature             | Array                               | Linked List                     |
+| ------------------- | ----------------------------------- | ------------------------------- |
+| Memory              | Contiguous (adjacent)               | Non-contiguous (scattered)      |
+| Size                | Usually fixed or resized by copying | Can grow and shrink dynamically |
+| Access by index     | O(1)                                | O(n)                            |
+| Insert at beginning | O(n)                                | O(1)                            |
+| Delete at beginning | O(n)                                | O(1)                            |
+| Memory overhead     | Low                                 | Higher (stores links)           |
+| Cache performance   | Better                              | Generally worse                 |
+
+| Array                                | Linked List                            |
+| ------------------------------------ | -------------------------------------- |
+| Contiguous memory                    | Nodes can be anywhere in memory        |
+| O(1) indexing                        | O(n) indexing                          |
+| Insert/Delete in middle: O(n)        | Insert/Delete after a known node: O(1) |
+| Fixed-size allocation (conceptually) | Dynamic size                           |

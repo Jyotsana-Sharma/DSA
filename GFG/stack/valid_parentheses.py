@@ -19,7 +19,7 @@ class Solution:
         else:
             return False
 obj = Solution()
-s = "()"
+s = "[{()}]"
 bool_val = obj.isValid(s)
-            
+print(bool_val)
         
