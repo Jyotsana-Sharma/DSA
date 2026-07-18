@@ -19,3 +19,76 @@ Linked lists are useful when:
 | O(1) indexing                        | O(n) indexing                          |
 | Insert/Delete in middle: O(n)        | Insert/Delete after a known node: O(1) |
 | Fixed-size allocation (conceptually) | Dynamic size                           |
+
+
+"When do you use while current vs while current.next?"
+
+A good answer is:
+
+while current: Use when you need to process every node in the list (printing, counting, searching, summing, etc.).
+while current.next: Use when you need to stop at the last node so you can safely modify its next pointer (for example, inserting a node at the end).
+
+Golden Rule for interview: 
+new_node.next = current.next   # Save the rest of the list
+current.next = new_node        # Connect the new node
+Never reverse the above two lines
+
+Steps to remember:
+Draw the list.
+Circle the pointer you're about to overwrite.
+Ask: "Have I saved what it was pointing to?"
+Only then update the pointer.
+
+
+Tricky Question:
+head
+ |
+ v
+10 → 20 → 30 → 40
+We want to insert 25 at position = 2.
+After executing:
+
+new_node.next = current.next
+but before executing:
+
+current.next = new_node
+
+What does head look like?
+
+Hint: Remember that head hasn't changed yet. Think about:
+
+Where does current point?
+Where does new_node point?
+What can you reach by starting from head?
+
+Answer:
+current holds 20 and pointing to 20 
+new_node points to 25 and it has its next value as 30 so basically the structure would look like 25->30->40->none
+Since We have not changed this pointer yet:
+
+current.next = new_node
+So the original list is still intact.
+
+Starting from head, we still have:
+head
+ |
+ v
+10 → 20 → 30 → 40 → None
+Separately, we also have:
+
+new_node
+ |
+ v
+25 → 30 → 40 → None
+So there are two paths to node 30:
+
+head
+ |
+ v
+10 → 20 → 30 → 40
+          ↑
+          |
+25 ───────┘
+^
+|
+new_node
