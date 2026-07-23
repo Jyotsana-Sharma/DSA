@@ -116,3 +116,54 @@ for _ in range(position):
 -> Deletion: You want current to stop at the node to delete, while prev stops at the previous node.
 
 This difference is one of the most common sources of off-by-one errors.
+
+Reverse Linked List:
+Reversed Part
+
+10 → None
+^
+|
+prev
+
+
+
+Remaining Part
+
+20 → 30 → None
+^
+|
+current
+
+Note: 
+prev is building the reversed list.
+current is walking through the remaining list.
+next_node temporarily remembers where to go next.
+
+Thumb Rule:
+When you need to traverse every node, then use : 
+while current:
+
+When you need to look ahead, then use: 
+while current.next
+
+Always ask yourself: 
+Do I want to process the current node or do I want to stop before the last node? 
+If you're printing, counting, summing, searching, or finding max/min, you almost always want: 
+while current:
+
+| Loop Condition        | Last Node Processed? | Common Use                                                      |
+| --------------------- | -------------------- | --------------------------------------------------------------- |
+| `while current:`      | ✅ Yes                | Traverse, print, count, sum, search                             |
+| `while current.next:` | ❌ No                 | Stop one node before the end (e.g., insert at end, delete last) |
+
+
+## Slow and fast pointers 
+
+slow = head
+fast = head
+while fast and fast.next:
+    slow = slow.next
+    fast = fast.next.next
+
+slow always moves 1 step 
+fast always moves 2 steps
