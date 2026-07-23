@@ -92,3 +92,27 @@ head
 ^
 |
 new_node
+
+"What happens to the deleted node?"
+
+"After updating the head, the old first node is no longer referenced by the linked list. In Python, once there are no references to that node, it becomes eligible for garbage collection."
+
+| Operation           | Pointers Needed    |
+| ------------------- | ------------------ |
+| Traverse            | `current`          |
+| Insert at beginning | `head`             |
+| Insert at end       | `current`          |
+| Insert at position  | `current`          |
+| Delete first        | `head`             |
+| Delete last         | `prev` + `current` |
+
+Insert at Position:
+for _ in range(position - 1): 
+
+Delete at Position 
+for _ in range(position): 
+
+-> Insertion: You want current to stop at the previous node, where you'll insert after it.
+-> Deletion: You want current to stop at the node to delete, while prev stops at the previous node.
+
+This difference is one of the most common sources of off-by-one errors.
