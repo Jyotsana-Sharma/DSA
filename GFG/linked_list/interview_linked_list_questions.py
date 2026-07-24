@@ -41,7 +41,18 @@ def traverse_linked_list(head):
     return updated_ll
 
 def find_cycle(head):
-    pass 
+    current = head
+    slow = current.next 
+    fast = current.next
+
+    while fast and fast.next:
+        if(slow==fast):
+            return True
+        slow = slow.next 
+        fast = fast.next.next 
+    return False 
+
+
 
 head = ListNode(10)
 second_node = ListNode(20)
@@ -73,4 +84,7 @@ cycle_head.next = cycle_first_node
 cycle_first_node.next = cycle_second_node
 cycle_second_node.next = cycle_third_node
 cycle_third_node.next = cycle_first_node
+
+bool_has_cycle =  find_cycle(cycle_head)
+print(f'\n the current linked has cycle: {bool_has_cycle}\n')
 
