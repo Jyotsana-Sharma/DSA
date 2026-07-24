@@ -160,10 +160,18 @@ while current:
 ## Slow and fast pointers 
 
 slow = head
+
 fast = head
+
 while fast and fast.next:
+
     slow = slow.next
+
     fast = fast.next.next
 
 slow always moves 1 step 
+
 fast always moves 2 steps
+
+To identify cycle in a linked list just check whether the slow==fast or not 
+
