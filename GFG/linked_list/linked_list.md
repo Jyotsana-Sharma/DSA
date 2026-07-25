@@ -175,3 +175,20 @@ fast always moves 2 steps
 
 To identify cycle in a linked list just check whether the slow==fast or not 
 
+
+Why do we use a dummy node in the case of merge two linked list?
+The dummy node avoids special handling for the head of the merged list. Every node is added using the same logic, and at the end we simply return dummy.next.
+
+
+| Problem             | Fast Pointer Setup                                        | Where `slow` ends                 |
+| ------------------- | --------------------------------------------------------- | --------------------------------- |
+| Find middle         | `fast = head`                                             | Middle node                       |
+| Detect cycle        | `fast = head`                                             | Meets `fast` if a cycle exists    |
+| Remove Nth from end | Move `fast` ahead by **n** (or **n+1** with a dummy node) | At or just before the target node |
+
+| Problem             | Initial Setup                                              | Pointer Movement         |
+| ------------------- | ---------------------------------------------------------- | ------------------------ |
+| Find Middle         | `slow = head`, `fast = head`                               | `slow += 1`, `fast += 2` |
+| Detect Cycle        | `slow = head`, `fast = head`                               | `slow += 1`, `fast += 2` |
+| Remove Nth From End | `slow = dummy`, `fast = dummy`, move `fast` ahead by `n+1` | `slow += 1`, `fast += 1` |
+

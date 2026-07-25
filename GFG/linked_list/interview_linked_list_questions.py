@@ -10,9 +10,13 @@ def reverse_linked_list(head):
     current = head 
     
     while current:
-        next_node = current.next 
+        #saving the next node
+        next_node = current.next
+        #reverse the current pointer(10.next->None) 
         current.next = prev 
+        # moving previous forward(<-)
         prev = current 
+        #moving current forward(->)
         current = next_node
 
     return prev 
@@ -42,16 +46,50 @@ def traverse_linked_list(head):
 
 def find_cycle(head):
     current = head
-    slow = current.next 
-    fast = current.next
+    slow = current
+    fast = current
 
     while fast and fast.next:
-        if(slow==fast):
-            return True
         slow = slow.next 
         fast = fast.next.next 
+        if(slow==fast):
+            return True
+        
     return False 
 
+def merge_two_linked_list(list1,list2):
+    dummy = ListNode(0)
+    tail = dummy 
+
+    while list1 and list2:
+        if(list1.val<list2.val):
+            tail.next = list1
+            tail = tail.next 
+            list1 = list1.next 
+        else:
+            tail.next = list2
+            tail = tail.next
+            list2 = list2.next 
+        
+    if list1:
+        tail.next = list1
+    if list2 : 
+        tail.next = list2
+    return dummy.next
+
+def remove_nth_from_end(head, n):
+    dummy_node = ListNode(0)
+    dummy_node.next = head
+    slow = dummy_node 
+    fast = dummy_node 
+    for i in range(n+1):
+            fast = fast.next
+    while fast:
+        slow = slow.next 
+        fast = fast.next 
+         
+    slow.next = slow.next.next     
+    return dummy_node.next 
 
 
 head = ListNode(10)
@@ -88,3 +126,29 @@ cycle_third_node.next = cycle_first_node
 bool_has_cycle =  find_cycle(cycle_head)
 print(f'\n the current linked has cycle: {bool_has_cycle}\n')
 
+
+## Merge two sorted linked list
+head1 = ListNode(1)
+first_merge_node = ListNode(3)
+second_merge_node = ListNode(5)
+head1.next = first_merge_node
+first_merge_node.next = second_merge_node 
+second_merge_node.next = None 
+
+head2 = ListNode(2)
+first_merge_node2 = ListNode(4)
+second_merge_node2 = ListNode(6)
+head2.next = first_merge_node2
+first_merge_node2.next = second_merge_node2
+second_merge_node2.next = None 
+
+updated_linked_list_head = merge_two_linked_list(head1,head2)
+
+merged_linked_list = traverse_linked_list(updated_linked_list_head)
+print(f'\n merged linked list : {merged_linked_list}')
+
+## Remove Nth node from the end
+n = 2
+removed_node_linked_list=remove_nth_from_end(updated_linked_list_head, n)
+removed_node_linked_list = traverse_linked_list(removed_node_linked_list)
+print(f'\n removed nth node that is 2nd node from the end: {removed_node_linked_list}')
