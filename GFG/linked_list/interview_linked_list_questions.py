@@ -92,6 +92,48 @@ def remove_nth_from_end(head, n):
     return dummy_node.next 
 
 
+def palindrome_linked_list(head):
+  
+    slow = head
+    fast = head
+
+    while fast and fast.next:
+        slow = slow.next
+        fast = fast.next.next
+
+
+    def reverse_list(head):
+        prev = None
+        current = head
+
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+
+        return prev
+
+
+    if fast:
+        # Odd length: skip the middle
+        second_half_list = reverse_list(slow.next)
+    else:
+        # Even length: start at slow
+        second_half_list = reverse_list(slow)
+
+    current = head
+
+    while second_half_list:
+        if current.val != second_half_list.val:
+            return False
+
+        current = current.next
+        second_half_list = second_half_list.next
+    return True
+
+
+
 head = ListNode(10)
 second_node = ListNode(20)
 third_node = ListNode(30)
@@ -152,3 +194,19 @@ n = 2
 removed_node_linked_list=remove_nth_from_end(updated_linked_list_head, n)
 removed_node_linked_list = traverse_linked_list(removed_node_linked_list)
 print(f'\n removed nth node that is 2nd node from the end: {removed_node_linked_list}')
+
+
+
+## Check whether the linked list is a palindrome or not 
+pal_head = ListNode(10)
+pal_second_node = ListNode(20)
+pal_third_node = ListNode(30)
+pal_fourth_node = ListNode(40)
+pal_head.next = pal_second_node 
+pal_second_node.next = pal_third_node 
+pal_third_node.next = pal_fourth_node 
+pal_fourth_node.next = None 
+bool_palindrome = palindrome_linked_list(pal_head)
+linkedlist = traverse_linked_list(pal_head)
+print(f'\n check for palindrome the linked list is : {linkedlist}')
+print(f'\n Is my linked list is a palindrome or not: {bool_palindrome}, it is')
