@@ -133,6 +133,51 @@ def palindrome_linked_list(head):
     return True
 
 
+def reorder_linked_list(head):
+    #Steps for reording the linked lists are:
+    #Step 1: Find the middle element using slow and fast pointer we can 
+    #Step 2: Reverse the second half of the linked list we can make use of prev and next_node and current 
+    #Step 3: Merge the two halves 
+
+    slow = head 
+    fast = head 
+
+    while fast and fast.next:
+        slow = slow.next 
+        fast = fast.next.next 
+    def reorder_reverse_linked_list(head):
+        prev = None 
+        current = head 
+        while current:
+            next_node = current.next 
+            current.next = prev 
+            prev = current 
+            current = next_node
+        return prev
+
+    second = slow.next 
+    slow.next = None 
+    second = reorder_reverse_linked_list(second)
+    first = head 
+    #first 1->2->3 
+    #second 5->4 
+    while second: 
+        # order to be followed : Save -> Connect -> Move
+
+        temp1 = first.next #(temp1 = 1.next that is 2->3)
+        temp2 = second.next #(temp2 = 5.next that is 4)
+        first.next = second
+        second.next = temp1
+        first = temp1 
+        second = temp2
+    return 
+
+
+
+
+
+
+
 
 head = ListNode(10)
 second_node = ListNode(20)

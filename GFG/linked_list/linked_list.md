@@ -173,7 +173,19 @@ slow always moves 1 step
 
 fast always moves 2 steps
 
+
 To identify cycle in a linked list just check whether the slow==fast or not 
+
+For an even-length list:
+
+1 → 2 → 3 → 4
+
+the slow pointer stops at the first node of the second half:
+
+1 → 2 → [3] → 4
+          ↑
+        slow
+
 
 
 Why do we use a dummy node in the case of merge two linked list?
@@ -192,3 +204,33 @@ The dummy node avoids special handling for the head of the merged list. Every no
 | Detect Cycle        | `slow = head`, `fast = head`                               | `slow += 1`, `fast += 2` |
 | Remove Nth From End | `slow = dummy`, `fast = dummy`, move `fast` ahead by `n+1` | `slow += 1`, `fast += 1` |
 
+
+Reorder List: 
+1. Find the middle.
+2. Split the list.
+3. Reverse the second half.
+4. Merge the two halves alternately.
+
+
+Once you change a node's next pointer, don't trust it to take you where it originally did. If you still need the original next node, save it first.
+
+That's why we always write:
+
+temp = current.next
+
+Whenever we modify the pointer: 
+Reverse Linked List
+↓
+Save → Connect → Move
+
+Reorder List
+↓
+Save → Connect → Move
+
+Swap Pairs
+↓
+Save → Connect → Move
+
+Reverse in K Groups
+↓
+Save → Connect → Move
