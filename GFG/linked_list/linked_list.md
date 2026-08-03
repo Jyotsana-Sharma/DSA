@@ -234,3 +234,13 @@ Save → Connect → Move
 Reverse in K Groups
 ↓
 Save → Connect → Move
+
+
+Whenever you see: 
+
+clone/copy/duplicate a linked list/graph
+
+think:
+
+Original object → New object
+

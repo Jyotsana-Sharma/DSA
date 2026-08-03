@@ -173,7 +173,22 @@ def reorder_linked_list(head):
     return 
 
 
+def intersection_of_two_linked_list(headA,headB):
+    pA = headA 
+    pB = headB
+    
+    while pA!=pB:
+        if pA is None:
+            pA = headB
+        else:
+            pA = pA.next 
 
+        if pB is None:
+            pB = headA
+        else:
+            pB = pB.next 
+    return pA
+        
 
 
 
@@ -255,3 +270,24 @@ bool_palindrome = palindrome_linked_list(pal_head)
 linkedlist = traverse_linked_list(pal_head)
 print(f'\n check for palindrome the linked list is : {linkedlist}')
 print(f'\n Is my linked list is a palindrome or not: {bool_palindrome}, it is')
+
+
+intersect_headA = ListNode(1)
+intersect_firstnode = ListNode(2)
+intersect_secondnode = ListNode(3)
+shared_intersect_thirdnode = ListNode(8)
+shared_intersect_fourthnode = ListNode(9)
+intersect_headA.next  = intersect_firstnode 
+intersect_firstnode.next  = intersect_secondnode  
+intersect_secondnode.next  = shared_intersect_thirdnode 
+shared_intersect_thirdnode.next  = shared_intersect_fourthnode 
+shared_intersect_fourthnode.next = None
+
+intersect_headB = ListNode(6)
+intersect_headB.next = shared_intersect_thirdnode
+
+# intersect_headB.next.next = shared_intersect_fourthnode
+
+intersecthead_returned = intersection_of_two_linked_list(intersect_headA,intersect_headB)
+intersected_linked_list = traverse_linked_list(intersecthead_returned)
+print(f'\n intersected linked list:{intersected_linked_list}')
