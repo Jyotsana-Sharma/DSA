@@ -190,9 +190,53 @@ def intersection_of_two_linked_list(headA,headB):
     return pA
         
 
+def add_two_numbers(l1,l2):
+    pass
+
+def reverseKGroup(head, k):
+
+    def find_k_nodes(head,k):
+        current = head 
+        for _ in range(k):
+            if current is None:
+                return None 
+            current = current.next 
+        return current 
+
+        
+    def reverse_current_group(head,grp_next):
+        prev = grp_next 
+        current = head 
+        while current!=grp_next:
+            next_node = current.next
+            current.next = prev 
+            prev = current
+         
+            current = next_node
+        return prev 
 
 
+    # create dummy
+    dummy = ListNode(0)
+    dummy.next = head 
+    grp_prev = dummy
 
+    while True:
+
+        node_k = find_k_nodes(grp_prev, k)
+
+        if node_k is None:
+            break
+
+        grp_start = grp_prev.next
+        grp_next = node_k.next
+
+        new_group_head = reverse_current_group(grp_start, grp_next)
+
+        grp_prev.next = new_group_head
+
+        grp_prev = grp_start
+    return dummy.next 
 
 head = ListNode(10)
 second_node = ListNode(20)
@@ -286,8 +330,21 @@ shared_intersect_fourthnode.next = None
 intersect_headB = ListNode(6)
 intersect_headB.next = shared_intersect_thirdnode
 
-# intersect_headB.next.next = shared_intersect_fourthnode
-
 intersecthead_returned = intersection_of_two_linked_list(intersect_headA,intersect_headB)
 intersected_linked_list = traverse_linked_list(intersecthead_returned)
 print(f'\n intersected linked list:{intersected_linked_list}')
+
+#Adding two numbers 
+l1_head = ListNode(2)
+l1_firstnode = ListNode(3)
+l1_secondnode = ListNode(7)
+l2_head = ListNode(4)
+l2_firstnode = ListNode(5)
+l2_secondnode = ListNode(6)
+l1_head.next = l1_firstnode
+l1_firstnode.next = l1_secondnode
+l1_secondnode.next = None 
+l2_head.next = l2_firstnode 
+l2_firstnode.next = l2_secondnode
+l2_secondnode.next = None 
+

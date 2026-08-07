@@ -244,3 +244,37 @@ think:
 
 Original object → New object
 
+In Reorder List, it became: 
+
+Save
+↓
+Connect
+↓
+Move
+
+
+Now in Reverse k-Group, the same pattern appears at a higher level:
+
+Find group
+↓
+Save group_next
+↓
+Reverse group
+↓
+Reconnect
+↓
+Move to next group
+
+The actual loop for k-nodes looks like below: 
+
+Find k nodes
+      ↓
+Save group_next
+      ↓
+Reverse group
+      ↓
+Reconnect
+      ↓
+group_prev = tail
+      ↓
+Repeat
