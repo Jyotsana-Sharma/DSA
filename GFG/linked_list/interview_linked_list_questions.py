@@ -204,16 +204,18 @@ def reverseKGroup(head, k):
         return current 
 
         
-    def reverse_current_group(head,grp_next):
-        prev = grp_next 
-        current = head 
-        while current!=grp_next:
+    
+    def reverse_linked_list(grp_start, grp_end):
+        prev = grp_end
+        current = grp_start
+
+        while current != grp_end:
             next_node = current.next
-            current.next = prev 
+            current.next = prev
             prev = current
-         
             current = next_node
-        return prev 
+
+        return prev
 
 
     # create dummy
@@ -222,17 +224,20 @@ def reverseKGroup(head, k):
     grp_prev = dummy
 
     while True:
-
+        #Finding k nodes
         node_k = find_k_nodes(grp_prev, k)
 
         if node_k is None:
             break
-
+        
+        #saving group next and group start
         grp_start = grp_prev.next
         grp_next = node_k.next
 
+        #reversing the group 
         new_group_head = reverse_current_group(grp_start, grp_next)
 
+        #reconnect the group 
         grp_prev.next = new_group_head
 
         grp_prev = grp_start
