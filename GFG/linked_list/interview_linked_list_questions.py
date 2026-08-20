@@ -191,7 +191,23 @@ def intersection_of_two_linked_list(headA,headB):
         
 
 def add_two_numbers(l1,l2):
-    pass
+    carry = 0
+    total_sum = 0
+    cp_new_node = ListNode(0) 
+    current = cp_new_node
+
+    while l1 or l2 or carry:
+        val1 = l1.val if l1 else 0 
+        val2 = l2.val if l2 else 0 
+        total_sum = val1+val2 
+        carry_val = total_sum%10 
+        digit = total_sum//10 
+        current.next = ListNode(digit)
+        l1 = l1.next 
+        l2 = l2.next 
+    return cp_new_node.next
+
+    
 
 def reverseKGroup(head, k):
 
@@ -205,7 +221,7 @@ def reverseKGroup(head, k):
 
         
     
-    def reverse_linked_list(grp_start, grp_end):
+    def reverse_current_group(grp_start, grp_end):
         prev = grp_end
         current = grp_start
 
