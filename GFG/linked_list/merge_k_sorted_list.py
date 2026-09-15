@@ -39,6 +39,8 @@ def merge_multiple_list(lists):
     return merged_lists
 
 def merge_lists(lists):
+    if len(lists) == 0 :
+        return None 
     while(len(lists)>1):
         lists = merge_multiple_list(lists)
     return lists[0] 
@@ -55,5 +57,17 @@ l2_node2 = Node(4)
 l3_head = Node(2)
 l3_node1 = Node(6)
 
+l1_head.next = l1_node1
+l1_node1.next = l1_node2
+l1_node2.next = None 
+
+l2_head.next = l2_node1
+l2_node1.next = l2_node2
+l2_node2.next = None 
+
+l3_head.next = l3_node1
+l3_node1.next = None 
+
 k = input("Enter the number of k linked list: ")
+
 
