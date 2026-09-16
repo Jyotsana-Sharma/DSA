@@ -68,7 +68,7 @@ l2_node2.next = None
 l3_head.next = l3_node1
 l3_node1.next = None 
 
-k = input("Enter the number of k linked list: ")
+
 
 lists = [l1_head,l2_head,l3_head]
 
