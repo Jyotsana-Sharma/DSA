@@ -1,3 +1,7 @@
+class ListNode:
+    def __init__(self,val):
+        self.val = val
+        
 class MyLinkedList:
 
     def __init__(self):
@@ -9,6 +13,7 @@ class MyLinkedList:
         pass 
 
     def addAtHead(self,val):
+        
         pass 
 
     def addAtTail(self,val):
