@@ -16,3 +16,19 @@ def reverse_dll_brute_force(head):
         temp.val = e
         temp = temp.next 
     return head 
+
+#optimized version of reversing a dll 
+def reverse_dll_optimized(head):
+    current = head 
+    prev = None 
+    front = current.next 
+    if head.next is None:
+        return head 
+
+    while current is not None: 
+        current.next = prev
+        current.prev = front 
+        prev = current 
+        current = front  
+
+    return prev 
