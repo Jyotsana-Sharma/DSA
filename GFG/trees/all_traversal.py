@@ -60,7 +60,80 @@ def inorder_using_stack(root):
         #moving to the right tree now the current node points to the first node that we added in the stack_list 
         current_node = current_node.right 
     return result 
+
+#Pre-order traversal recursive approach 
+def traverse_preorder_tree(root,result_pre_order):
+    if root==None:
+        return
+    
+    result_pre_order.append(root.val)
+    traverse_preorder_tree(root.left,result_pre_order)
+    traverse_preorder_tree(root.right,result_pre_order) 
+      
+
+def pre_order_recursive(root):
+    result_pre_order = []
+  
+    traverse_preorder_tree(root,result_pre_order)     
+    return result_pre_order
+
+#Iterative approach of preorder 
+def preorder_iterative(root):
+    result = []
+    current = root 
+    stack = []
+
+    while current or stack:
+
+        while current: 
+            result.append(current.val)
+            stack.append(current)
+            current = current.left 
+      
+        current = stack.pop()
+        current = current.right
+    return result
+
+#post order traversal recursive approach
+def post_order_traversal(root,result_postorder):
+    if root == None: 
+        return 
+    
+    
+    post_order_traversal(root.left,result_postorder)
+    
+    post_order_traversal(root.right,result_postorder)
+    result_postorder.append(root.val)
+    
+
+
+def post_order_recursive_traversal(root):
+    result_postorder = []
+    post_order_traversal(root,result_postorder)
+    return result_postorder 
+
+
+#post order iterative approach 
+def postorder_iterative_traversal(root):
+    result = []
+    stack = []
+    current = root 
+
+    while current or stack:
+        while current: 
+            stack.append(current)
+            current = current.left 
+            
+        peek_node = stack[-1]
         
+  
+        if peek_node.right and last_visited != peek_node.right:
+            current = peek_node.right
+        else:
+            
+            result.append(peek_node.val)
+            last_visited = stack.pop()
+    return result
 
 root = Node(1)
 two = Node(2)
@@ -94,7 +167,18 @@ print(final_inorder_binary_tree_result)
 iterative_inorder = inorder_using_stack(root)
 print(f'\n iterative inorder: {iterative_inorder}')
 
+#Preorder traversal 
+final_preorder_binary_tree_result = pre_order_recursive(root)
+print(f'\n preorder traversal result : {final_preorder_binary_tree_result}')
 
+#preorder iterative approach traversal 
+preorder_iterative_result = preorder_iterative(root)
+print(f'\n preorder iterative result : {preorder_iterative_result}')
 
+#post order traversal recursive approach
+postorder_traversal_result = post_order_recursive_traversal(root)
+print(f'\n post_order_traversal_result: {postorder_traversal_result}\n')
 
-
+#postorder traversal iterative approach
+post_order_iterative_traversal_res = postorder_iterative_traversal(root)
+print(f"\n post_order_iterative_traversal_result : {post_order_iterative_traversal_res }")
