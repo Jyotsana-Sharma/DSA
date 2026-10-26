@@ -116,24 +116,25 @@ def post_order_recursive_traversal(root):
 #post order iterative approach 
 def postorder_iterative_traversal(root):
     result = []
-    stack = []
-    current = root 
+    stack = [root]
+    out_stack = []
 
-    while current or stack:
-        while current: 
-            stack.append(current)
-            current = current.left 
-            
-        peek_node = stack[-1]
+    while stack:
+        current_node = stack.pop()
+        out_stack.append(current_node)
+
+        #push the left node first since it is post order so left then right then root 
+        if current_node.left:
+            stack.append(current_node.left)
+
+        if current_node.right:
+            stack.append(current_node.right)
+
+    #after above while loop we have out_stack having nodes in the order root->right->left we need to reverse it 
+    return [node.val for node in reversed(out_stack)]        
         
-  
-        if peek_node.right and last_visited != peek_node.right:
-            current = peek_node.right
-        else:
-            
-            result.append(peek_node.val)
-            last_visited = stack.pop()
-    return result
+       
+
 
 root = Node(1)
 two = Node(2)
@@ -161,19 +162,19 @@ six.right = None
 seven.left = ten 
 seven.right = None
 
-final_inorder_binary_tree_result = recursive_inroder_traversal(root)
-print(final_inorder_binary_tree_result)
+# final_inorder_binary_tree_result = recursive_inroder_traversal(root)
+# print(final_inorder_binary_tree_result)
 
-iterative_inorder = inorder_using_stack(root)
-print(f'\n iterative inorder: {iterative_inorder}')
+# iterative_inorder = inorder_using_stack(root)
+# print(f'\n iterative inorder: {iterative_inorder}')
 
-#Preorder traversal 
-final_preorder_binary_tree_result = pre_order_recursive(root)
-print(f'\n preorder traversal result : {final_preorder_binary_tree_result}')
+# #Preorder traversal 
+# final_preorder_binary_tree_result = pre_order_recursive(root)
+# print(f'\n preorder traversal result : {final_preorder_binary_tree_result}')
 
-#preorder iterative approach traversal 
-preorder_iterative_result = preorder_iterative(root)
-print(f'\n preorder iterative result : {preorder_iterative_result}')
+# #preorder iterative approach traversal 
+# preorder_iterative_result = preorder_iterative(root)
+# print(f'\n preorder iterative result : {preorder_iterative_result}')
 
 #post order traversal recursive approach
 postorder_traversal_result = post_order_recursive_traversal(root)
