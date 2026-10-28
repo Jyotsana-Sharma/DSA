@@ -115,7 +115,7 @@ def post_order_recursive_traversal(root):
 
 #post order iterative approach 
 def postorder_iterative_traversal(root):
-    result = []
+  
     stack = [root]
     out_stack = []
 
