@@ -55,7 +55,21 @@ def find_height(root):
     return max(lh,rh)+1
 
 
+#another approach 
+def height(root,max_diameter):
+    if root is None:
+        return 0
 
+    lh = height(root.left,max_diameter[0])
+    rh = height(root.right,max_diameter[0])
+    max_diameter[0] = max(max_diameter[0], lh + rh)
+    return 1 + max(lh,rh)
+
+def diameter_bt(root):
+    max_diameter = [0]
+    diameter=height(root,max_diameter)
+    return diameter
+    
 
 root = Node(1)
 two = Node(2)
@@ -91,4 +105,7 @@ eight.right = None
 maxi = find_max(root)
 
 print(maxi)
+
+res = diameter_bt(root)
+print(res)
 
