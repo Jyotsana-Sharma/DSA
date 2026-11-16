@@ -32,7 +32,14 @@ def check_same_tree(p,q):
         if(i!=j):
             return False 
     return True 
-    
+
+
+#optimized solution 
+def isSameTree(p,q):
+    if(p is None or q is None):
+        return False
+
+    return (p.val == q.val ) and (isSameTree(p.left,q.left)) and (isSameTree(p.right,q.right)) 
 
 root_p = Node(1)
 p_node_left = Node(2)
@@ -43,8 +50,10 @@ root_p.right = p_node_right
 root_q = Node(1)
 q_node_left = Node(2)
 q_node_right = Node(3)
-root_q.right =  q_node_right
-root_q.left =  q_node_left 
+root_q.right =  q_node_left
+root_q.left =   q_node_right
 
 bool_res = check_same_tree(root_p,root_q)
 print(bool_res)
+
+bool_optimized_solution = isSameTree(root_p,root_q)
